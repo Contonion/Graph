@@ -31,7 +31,7 @@ public:
     //Connect
     void addEdge (int source, int target);
     void addEdgeUndirected(int source, int target);
-    void addEdgeConst(int source, int target, int cost);
+    void addEdgeCost(int source, int target, int cost);
     //Disconnect
     void removeEdge(int source, int target);
     void removeEdgeUndirected(int source, int target);
@@ -101,7 +101,7 @@ void Graph<Type> :: addEdge(int source, int target)
     adjacencyMatrix[source][target] = true;
 }
 template <class Type>
-void Graph<Type> :: addEdgeConst(int source, int target, int cost)
+void Graph<Type> :: addEdgeCost(int source, int target, int cost)
 {
     assert(source >= 0 && source < vertexCount && target >= 0 && target < vertexCount);
     weightCostMatrix[source][target] = cost;
@@ -205,7 +205,7 @@ void Graph<Type> :: breadthFirstTraversal(Graph<Type> & currentGraph, int vertex
     
     std::fill_n(visited, currentGraph.size(), false);
     visited[vertex] = true;
-    cout<< currentGraph[vertex] << endl;
+    cout << currentGraph[vertex] << endl;
     vertexQueue.push(vertex);
     while (!vertexQueue.empty())
     {
